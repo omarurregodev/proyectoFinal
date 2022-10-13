@@ -23,9 +23,18 @@ export default class Producto {
     }
 
     actualizar(prod, id) {
-        prod.id = Number(id);
-        let index = Producto.productos.findIndex((prod) => prod.id == id);
-        Producto.productos.splice(index, 1, prod);
+        const productId = Producto.productos.filter(data => data.id === parseInt(id));
+        if (productId.length > 0) {
+            productId[0].nombre = prod.nombre;
+            productId[0].descripcion = prod.descripcion;
+            productId[0].codigo = prod.codigo;
+            productId[0].foto = prod.foto;
+            productId[0].precio = prod.precio;
+            productId[0].stock = prod.stock;
+            return productId[0]        
+        } else {
+            return ({"error":"Producto no encontrado"});
+        }
     }
 
     borrar(id) {

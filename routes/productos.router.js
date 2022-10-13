@@ -33,4 +33,10 @@ router.get("/:id", (req, res) => {
     res.send(productoBuscado);
 });
 
+router.put("/:id", validarAdmin, (req, res) => {
+    console.log(req.body);
+    const productoActualizado = producto.actualizar(req.body, req.params.id);
+    res.send(productoActualizado);
+});
+
 export default router;
