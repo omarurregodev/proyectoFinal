@@ -33,8 +33,12 @@ router.post("/:id/productos/:idPrd", (req, res) => {
     res.send(modCarrito);
 });
 
-router.delete("/:id/products/:idPrd", (req, res) => {
-
+router.delete("/:id/productos/:idPrd", (req, res) => {
+    const deleteProdCarrito = carrito.eliminarProductoEnCarrito(
+        req.params.idPrd,
+        req.params.id
+    );
+    res.send(deleteProdCarrito);
 })
 
 export default router;

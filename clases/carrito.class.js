@@ -48,4 +48,10 @@ export default class Carrito {
         return this.carritos.splice(index, 1);
     }
 
+    eliminarProductoEnCarrito(idPrd, idCarrito) {
+        const productosCarrito = this.carritos.find((carr) => carr.id == idCarrito);
+        let index = productosCarrito.productos.findIndex((prod) => prod.id == idPrd);
+        return productosCarrito.productos.splice(index, 1);
+    }
+
 }
