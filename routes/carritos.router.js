@@ -21,11 +21,11 @@ router.get("/", (req, res) => {
 });
 
 router.post("/:id/productos/:idPrd", (req, res) => {
-    const carrito = carrito.guardarProductoEnCarrito(
+    const modCarrito = carrito.guardarProductoEnCarrito(
         req.params.idPrd,
         req.params.id
     );
-    res.send(carrito);
+    res.send(modCarrito);
 });
 
 export default router;

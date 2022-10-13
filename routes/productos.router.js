@@ -5,11 +5,14 @@ const router = express.Router();
 
 const producto = new Producto();
 function validarAdmin(req, res, next) {
-    if(req.query.admin) next();
-    else res.send("Usted no tiene acceso");
+    if(req.query.admin){
+        next();
+    } else {
+        res.send("Usted no tiene acceso")
+    }
 }
 
-router.post("/", (req, res) => {
+router.post("/", validarAdmin, (req, res) => {
     console.log(req.body);
     const productoCreado = producto.guardar(req.body);
     res.send(productoCreado);
