@@ -20,6 +20,11 @@ router.get("/", (req, res) => {
     res.send(listaCarritos);
 });
 
+router.get("/:id/productos", (req, res) => {
+    const listaCarro = carrito.listar(req.params.id);
+    res.send(listaCarro);
+});
+
 router.post("/:id/productos/:idPrd", (req, res) => {
     const modCarrito = carrito.guardarProductoEnCarrito(
         req.params.idPrd,
@@ -27,5 +32,9 @@ router.post("/:id/productos/:idPrd", (req, res) => {
     );
     res.send(modCarrito);
 });
+
+router.delete("/:id/products/:idPrd", (req, res) => {
+
+})
 
 export default router;
